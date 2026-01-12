@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: neighborly-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: neighborly-api
+  template:
+    metadata:
+      labels:
+        app: neighborly-api
+    spec:
+      containers:
+      - name: neighborly-api
+        image: neighborlyacr1768206981.azurecr.io/neighborly-api:v1
+        ports:
+        - containerPort: 80
+        env:
+        - name: MyDbConnection
+          value: "YOUR_COSMOSDB_CONNECTION_STRING_HERE"
+        - name: AzureWebJobsStorage
+          value: ""
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: neighborly-api-service
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+    targetPort: 80
+  selector:
+    app: neighborly-api

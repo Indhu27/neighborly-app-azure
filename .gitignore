@@ -1,0 +1,38 @@
+# Secrets and sensitive files
+*.pem
+*.key
+local.settings.json
+.env
+*.tgz
+*.tar.gz
+
+# MongoDB tools
+mongodb-database-tools*/
+
+# Python
+__pycache__/
+*.pyc
+.python_packages/
+
+# VS Code
+.vscode/
+
+# Azure
+.azure/
+# Virtual environments
+venv/
+env/
+ENV/
+
+# GitHub workflows (if not needed)
+.github/
+
+# Virtual environments
+venv/
+env/
+*.pyc
+__pycache__/
+
+# Large files
+*.tgz
+*.tar.gz
